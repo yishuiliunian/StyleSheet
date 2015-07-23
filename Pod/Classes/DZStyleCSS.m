@@ -10,28 +10,11 @@
 #import <objc/runtime.h>
 #import "DZButtonStyle.h"
 #import "DZLabelStyle.h"
-DZStyle* DZStyleFactory(UIView* aView)
-{
-    if (!aView) {
-        return nil;
-    }
-    if ([aView isKindOfClass:[UIButton class]]) {
-        return [DZButtonStyle zeroStyle];
-    } else if ([aView isKindOfClass:[UILabel class]])
-    {
-        return [DZLabelStyle zeroStyle];
-    } else {
-        return [DZViewStyle zeroStyle];
-    }
-}
+#import "DZPageControlStyle.h"
+#import "DZTextFieldStyle.h"
+#import "DZTextViewStyle.h"
+#import "DZSwitchStyle.h"
+#import "DZSegementStyle.h"
 
 
-
-
-IMP_SHARE_VIEW_STYLE(DefaultStyle,
-                     style.backgroundColor = [UIColor redColor];
-                     style.cornerRedius = 11;
-                     style.borderColor = [UIColor blackColor];
-                     style.borderWidth = 2;
-                     )
 

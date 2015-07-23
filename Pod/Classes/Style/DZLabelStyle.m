@@ -77,6 +77,20 @@ IMP_ZERO_STYLE
     
 }
 
+- (void) copyAttributesWithStyle:(id)style
+{
+    DZBeginCopyAttribute(DZLabelStyle);
+    DZStyleCopyAttribute(highlightedTextColor)
+    DZStyleCopyAttribute(shadowColor)
+    DZStyleCopyAttribute(shadowOffset)
+    DZStyleCopyAttribute(adjustsFontSizeToFitWidth)
+    DZStyleCopyAttribute(textAlignment)
+    if ([origin respondsToSelector:@selector(textStyle)]) {
+        self.textStyle = [origin.textStyle copy];
+    }
+    DZFinishCopyAttribute
+}
+
 - (id) copyWithZone:(NSZone *)zone
 {
     DZLabelStyle* style = [super copyWithZone:zone];

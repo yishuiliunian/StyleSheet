@@ -41,6 +41,15 @@ IMP_ZERO_STYLE
     
 }
 
+- (void) copyAttributesWithStyle:(id)style
+{
+    DZBeginCopyAttribute(DZTextFieldStyle)
+    if ([origin respondsToSelector:@selector(textStyle)]) {
+        self.textStyle = [origin.textStyle copy];
+    }
+    DZFinishCopyAttribute
+}
+
 - (id) copyWithZone:(NSZone *)zone
 {
     DZTextFieldStyle* style = [super copyWithZone:zone];

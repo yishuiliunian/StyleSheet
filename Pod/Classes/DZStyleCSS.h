@@ -12,7 +12,9 @@
 #import "UIView+Style.h"
 #import "DZViewStyle.h"
 #import "DZButtonStyle.h"
-
-FOUNDATION_EXTERN DZStyle* DZStyleFactory(UIView* aView);
-EXTERN_SHARE_VIEW_STYLE(DefaultStyle);
+#import "DZPageControlStyle.h"
+#import "DZTextFieldStyle.h"
+#import "DZTextViewStyle.h"
+#import "DZSwitchStyle.h"
+#import "DZSegementStyle.h"
 #endif

@@ -36,7 +36,16 @@ return style; \
 
 #define EXTERN_SHARE_STYLE(name, cla)  FOUNDATION_EXTERN cla* DZStyle##name();
 
+#define DZBeginCopyAttribute(cla) \
+cla* origin = (cla*)style; \
+[super copyAttributesWithStyle:style]; \
 
+#define DZFinishCopyAttribute  ;
+
+#define DZStyleCopyAttribute(attr) \
+if ([style respondsToSelector:@selector(attr)]) { \
+self.attr = origin.attr; \
+}
 
 
 @interface DZStyle : NSObject <NSCopying>
@@ -77,6 +86,7 @@ return style; \
  */
 - (void) setAttributeNeedRefresh;
 
+- (void) copyAttributesWithStyle:(id)style;
 
 - (void) addChildStyle:(DZStyle*)style;
 - (void) removeChildStyle:(DZStyle*)style;

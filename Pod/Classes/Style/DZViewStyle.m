@@ -19,6 +19,8 @@ IMP_ZERO_STYLE
     }
     return self;
 }
+
+
 - (void) setBorderColor:(UIColor *)borderColor
 {
     if (_borderColor != borderColor) {
@@ -81,6 +83,18 @@ IMP_ZERO_STYLE
     aView.clearsContextBeforeDrawing = self.clearsContextBeforeDrawing;
 }
 
+- (void) copyAttributesWithStyle:(id)style
+{
+    DZBeginCopyAttribute(DZViewStyle)
+    DZStyleCopyAttribute(cornerRedius)
+    DZStyleCopyAttribute(borderWidth)
+    DZStyleCopyAttribute(backgroundColor)
+    DZStyleCopyAttribute(borderColor)
+    DZStyleCopyAttribute(alpha)
+    DZStyleCopyAttribute(clipsToBounds)
+    DZStyleCopyAttribute(clearsContextBeforeDrawing)
+    DZFinishCopyAttribute
+}
 - (id) copyWithZone:(NSZone *)zone
 {
     DZViewStyle* style = [super copyWithZone:zone];

@@ -19,6 +19,13 @@ IMP_ZERO_STYLE
     }
     return self;
 }
+- (void) copyAttributesWithStyle:(id)style
+{
+    if (![style isKindOfClass:[DZStyle class]]) {
+        return ;
+    }
+    return;
+}
 
 - (void) decorateView:(UIView *)aView
 {

@@ -48,6 +48,17 @@ IMP_ZERO_STYLE
     [btn setTitleColor:_textColorHighlightedState forState:UIControlStateHighlighted];
 }
 
+- (void) copyAttributesWithStyle:(id)style
+{
+    DZBeginCopyAttribute(DZButtonStyle)
+    DZStyleCopyAttribute(textColorNormalState)
+    DZStyleCopyAttribute(textColorDisableState)
+    DZStyleCopyAttribute(textColorHighlightedState)
+    DZFinishCopyAttribute
+    
+    [self setAttributeNeedRefresh];
+}
+
 - (id) copyWithZone:(NSZone *)zone
 {
     DZButtonStyle* style = [super copyWithZone:zone];
