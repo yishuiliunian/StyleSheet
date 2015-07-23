@@ -9,5 +9,7 @@
 @import UIKit;
 
 @interface DZViewController : UIViewController
-
+@property (nonatomic, weak) IBOutlet UILabel* label;
+@property (nonatomic, weak) IBOutlet UIButton* button;
+@property (nonatomic, weak) IBOutlet UIView* aView;
 @end

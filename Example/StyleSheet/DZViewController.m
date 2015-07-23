@@ -7,6 +7,7 @@
 //
 
 #import "DZViewController.h"
+#import <DZStyleCSS.h>
 
 @interface DZViewController ()
 
@@ -17,6 +18,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.label.style = DZLabelStyleMake(
+                                        style.backgroundColor = [UIColor greenColor];
+                                        style.cornerRedius = 13;
+                                        style.borderColor = [UIColor redColor];
+                                        style.borderWidth = 2;
+    );
+    
+    self.button.style = self.label.style;
+    self.aView.style = self.label.style;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

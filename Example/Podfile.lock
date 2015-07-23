@@ -1,0 +1,14 @@
+PODS:
+  - StyleSheet (0.1.0)
+
+DEPENDENCIES:
+  - StyleSheet (from `../`)
+
+EXTERNAL SOURCES:
+  StyleSheet:
+    :path: ../
+
+SPEC CHECKSUMS:
+  StyleSheet: 15c3035a42f56ada82016f46eb91f587e62a0c15
+
+COCOAPODS: 0.33.1
