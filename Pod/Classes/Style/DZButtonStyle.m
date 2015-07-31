@@ -55,8 +55,6 @@ IMP_ZERO_STYLE
     DZStyleCopyAttribute(textColorDisableState)
     DZStyleCopyAttribute(textColorHighlightedState)
     DZFinishCopyAttribute
-    
-    [self setAttributeNeedRefresh];
 }
 
 - (id) copyWithZone:(NSZone *)zone

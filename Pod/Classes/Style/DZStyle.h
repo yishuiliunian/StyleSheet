@@ -40,7 +40,7 @@ return style; \
 cla* origin = (cla*)style; \
 [super copyAttributesWithStyle:style]; \
 
-#define DZFinishCopyAttribute  ;
+#define DZFinishCopyAttribute  [self setAttributeNeedRefresh];
 
 #define DZStyleCopyAttribute(attr) \
 if ([style respondsToSelector:@selector(attr)]) { \

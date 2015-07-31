@@ -11,6 +11,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+1. UIKit
+
 ## Installation
 
 StyleSheet is available through [CocoaPods](http://cocoapods.org). To install
@@ -72,11 +74,11 @@ self.label.style = DZLabelStyleMake(
     [self.button.style copyAttributesWithStyle:self.label.style];
 ```
 
-##通用样式的共享
+###通用样式的共享
 使用原有的配置，进行通用样式的共享是个非常困难的事情，基本上都是体力活，靠人力来维护。我们的代码中会掺杂大量的用于配置样式的代码，而且是独立且散在。
 
 现在你可以通过StyleSheet解决：
-###定义共享的样式：
+####定义共享的样式：
 
 ```
 EXTERN_SHARE_LABEL_STYLE(Content)
@@ -88,14 +90,30 @@ IMP_SHARE_LABEL_STYLE(Content,
                       )
 ```
 
-###使用共享样式
+
+####使用共享样式
 
 ```
 self.label.style =  DZStyleContent();
 ```
+
+
+##支持的类型
+
+1. UIView
+2. UILabel
+3. UITextView
+4. UITextField
+
+##计划中支持的类型
+
+1. UISearchBar
+2. UINavigationBar
+3. .....
+
 ## Author
 
-dongzhao, yishuiliunian@gmail.com
+yishuiliunian@gmail.com
 
 ## License
 

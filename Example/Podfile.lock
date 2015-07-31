@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  StyleSheet: 15c3035a42f56ada82016f46eb91f587e62a0c15
+  StyleSheet: 103dba49780cd5e82049aab1dfe56dd2a2f08bb2
 
 COCOAPODS: 0.33.1

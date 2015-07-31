@@ -21,6 +21,10 @@ IMP_SHARE_LABEL_STYLE(Content,
                       style.textStyle.textColor = [UIColor redColor];
                       )
 
+IMP_SHARE_SWITCH_STYLE(RedContent,
+                       style.backgroundColor = [UIColor redColor];
+                       )
+
 
 
 @implementation DZViewController
@@ -69,15 +73,7 @@ IMP_SHARE_LABEL_STYLE(Content,
     );
     
     
-    self.label.style = DZLabelStyleMake(
-                                        style.backgroundColor = [UIColor greenColor];
-                                        style.cornerRedius = 3;
-                                        style.borderColor = [UIColor redColor];
-                                        style.borderWidth = 2;
-                                        style.textStyle.textColor = [UIColor darkTextColor];
-                                        style.textStyle.font = [UIFont systemFontOfSize:13];
-    );
-    
+    self.label.style = DZStyleRedContent();
     self.label2.style = self.label.style;
     self.label2.style.textStyle = textStyle;
     self.label2.adjustsFontSizeToFitWidth = YES;

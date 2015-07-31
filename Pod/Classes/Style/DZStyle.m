@@ -8,6 +8,7 @@
 
 #import "DZStyle.h"
 #import "UIView+Style.h"
+#import "DZStyleRender.h"
 @implementation DZStyle
 IMP_ZERO_STYLE
 
@@ -51,7 +52,7 @@ IMP_ZERO_STYLE
 - (void) setAttributeNeedRefresh
 {
     if (self.linkedView) {
-        [self decorateView:self.linkedView];
+        [DZShareStypeRender addNeedRenderStyle:self];
     }
 }
 
