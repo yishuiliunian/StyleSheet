@@ -47,6 +47,10 @@ if ([style respondsToSelector:@selector(attr)]) { \
 self.attr = origin.attr; \
 }
 
+#define DZStyleCopyAttribute_Copy(attr) \
+if ([style respondsToSelector:@selector(attr)]) { \
+self.attr = [origin.attr copy]; \
+}
 
 @interface DZStyle : NSObject <NSCopying>
 {

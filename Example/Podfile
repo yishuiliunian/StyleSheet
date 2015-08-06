@@ -5,6 +5,4 @@ end
 
 target 'StyleSheet_Tests', :exclusive => true do
   pod "StyleSheet", :path => "../"
-
-  
 end

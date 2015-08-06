@@ -23,6 +23,7 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9B874F2769604C22A2597B5F /* libPods-StyleSheet_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A08F6F405C4449CFAB1F0BBB /* libPods-StyleSheet_Example.a */; };
 		D5E4C092E13446D2A3B96543 /* libPods-StyleSheet_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B847304F3247A388693A5C /* libPods-StyleSheet_Tests.a */; };
+		E103BE151B6B415D00E4AA07 /* IMG_1231.PNG in Resources */ = {isa = PBXBuildFile; fileRef = E103BE141B6B415D00E4AA07 /* IMG_1231.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		A08F6F405C4449CFAB1F0BBB /* libPods-StyleSheet_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleSheet_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E5EF530F564214A4734A60 /* Pods-StyleSheet_Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleSheet_Tests.xcconfig"; path = "Pods/Pods-StyleSheet_Tests.xcconfig"; sourceTree = "<group>"; };
 		C6AB0BE2F3E584B3E8E3DFD0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E103BE141B6B415D00E4AA07 /* IMG_1231.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1231.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		6003F593195388D20070C39A /* Example for StyleSheet */ = {
 			isa = PBXGroup;
 			children = (
+				E103BE141B6B415D00E4AA07 /* IMG_1231.PNG */,
 				6003F59C195388D20070C39A /* DZAppDelegate.h */,
 				6003F59D195388D20070C39A /* DZAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				E103BE151B6B415D00E4AA07 /* IMG_1231.PNG in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

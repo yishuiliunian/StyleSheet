@@ -16,8 +16,7 @@ return style; \
 }(); \
 
 
-#define DZViewStyleMake(initCode) DZStyleMake(initCode, DZViewStyle)
-
+#define DZViewStyleMake(initCode)               DZStyleMake(initCode, DZViewStyle)
 #define IMP_SHARE_VIEW_STYLE(name , initCode)   IMP_SHARE_STYLE(name , initCode, DZViewStyle)
 #define EXTERN_SHARE_VIEW_STYLE(name)           EXTERN_SHARE_STYLE(name, DZViewStyle);
 
@@ -38,4 +37,5 @@ return style; \
 @property (nonatomic, assign) CGFloat alpha;
 @property (nonatomic, assign) BOOL clipsToBounds;
 @property (nonatomic, assign) BOOL clearsContextBeforeDrawing;
+@property (nonatomic, strong) UIImage* styleBackgroundImage;
 @end

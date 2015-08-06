@@ -11,58 +11,61 @@
 @implementation DZButtonStyle
 IMP_ZERO_STYLE
 
-- (void) setTextColorDisableState:(UIColor *)textColorDisableState
+
+-(void) setNormalStyle:(DZButtonStateStyle *)normalStyle
 {
-    if (_textColorDisableState!= textColorDisableState) {
-        _textColorDisableState = textColorDisableState;
+    if (_normalStyle != normalStyle) {
+        _normalStyle = [normalStyle copy];
+        _normalStyle.state = UIControlStateNormal;
         [self setAttributeNeedRefresh];
     }
 }
 
-- (void) setTextColorNormalState:(UIColor *)textColorNormalState
+- (void) setDisabledStyle:(DZButtonStateStyle *)disabledStyle
 {
-    if (_textColorNormalState!= textColorNormalState) {
-        _textColorNormalState = textColorNormalState;
+    if (_disabledStyle != disabledStyle) {
+        _disabledStyle = [disabledStyle copy];
+        _disabledStyle.state = UIControlStateDisabled;
         [self setAttributeNeedRefresh];
     }
 }
 
-- (void) setTextColorHighlightedState:(UIColor *)textColorHighlightedState
+- (void) setHightlightedStyle:(DZButtonStateStyle *)hightlightedStyle
 {
-    if (_textColorHighlightedState != textColorHighlightedState) {
-        _textColorHighlightedState = textColorHighlightedState;
+    if (_hightlightedStyle != hightlightedStyle) {
+        _hightlightedStyle = [hightlightedStyle copy];
+        _hightlightedStyle.state = UIControlStateHighlighted;
         [self setAttributeNeedRefresh];
     }
-
-}
-- (void) decorateView:(UIView *)aView
-{
-    [super decorateView:aView];
-    
-    if (![aView isKindOfClass:[UIButton class]]) {
-        return;
-    }
-    UIButton* btn = (UIButton*)aView;
-    [btn setTitleColor:_textColorNormalState forState:UIControlStateNormal];
-    [btn setTitleColor:_textColorDisableState forState:UIControlStateDisabled];
-    [btn setTitleColor:_textColorHighlightedState forState:UIControlStateHighlighted];
 }
 
 - (void) copyAttributesWithStyle:(id)style
 {
     DZBeginCopyAttribute(DZButtonStyle)
-    DZStyleCopyAttribute(textColorNormalState)
-    DZStyleCopyAttribute(textColorDisableState)
-    DZStyleCopyAttribute(textColorHighlightedState)
+    DZStyleCopyAttribute_Copy(disabledStyle)
+    DZStyleCopyAttribute_Copy(normalStyle)
+    DZStyleCopyAttribute_Copy(hightlightedStyle)
     DZFinishCopyAttribute
+}
+
+
+- (void) decorateView:(UIView *)aView
+{
+    [super decorateView:aView];
+    if (![aView isKindOfClass:[UIButton class]]) {
+        return;
+    }
+    [self.disabledStyle decorateView:aView];
+    [self.normalStyle decorateView:aView];
+    [self.hightlightedStyle decorateView:aView];
 }
 
 - (id) copyWithZone:(NSZone *)zone
 {
     DZButtonStyle* style = [super copyWithZone:zone];
-    style.textColorHighlightedState = self.textColorHighlightedState;
-    style.textColorNormalState = self.textColorNormalState;
-    style.textColorDisableState = self.textColorDisableState;
+    style.hightlightedStyle = [self.hightlightedStyle copy];
+    style.normalStyle = [self.normalStyle copy];
+    style.disabledStyle = [self.disabledStyle copy];
     return style;
 }
 

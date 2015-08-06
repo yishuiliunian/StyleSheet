@@ -19,6 +19,7 @@ IMP_SHARE_LABEL_STYLE(Content,
                       style.backgroundColor = [UIColor clearColor];
                       style.cornerRedius = 2;
                       style.textStyle.textColor = [UIColor redColor];
+                      style.styleBackgroundImage = [UIImage imageNamed:@"IMG_1231.PNG"];
                       )
 
 IMP_SHARE_SWITCH_STYLE(RedContent,
@@ -67,19 +68,33 @@ IMP_SHARE_SWITCH_STYLE(RedContent,
     
 #else
     
-    DZTextStyle* textStyle =  DZTextStyleMake(
-                    style.font = [UIFont systemFontOfSize:20];
-                    style.textColor = [UIColor darkTextColor];
-    );
     
+    self.label.style = DZStyleContent();
     
-    self.label.style = DZStyleRedContent();
+    DZTextStyle* titleStyle =DZTextStyleMake(
+                                            style.font = [UIFont systemFontOfSize:15];
+                                            style.textColor = [UIColor blueColor];
+                                              );
+    
+    self.label.style = DZStyleContent();
     self.label2.style = self.label.style;
-    self.label2.style.textStyle = textStyle;
+    self.label2.style.textStyle = titleStyle;
     self.label2.adjustsFontSizeToFitWidth = YES;
     self.aView.style = self.label.style;
-    self.aView.style.backgroundColor = [UIColor blueColor];
+    self.aView.style.backgroundColor = [UIColor clearColor];
     [self.button.style copyAttributesWithStyle:self.label.style];
+    self.button.style.disabledStyle = DZButtonStateStyleMake(
+                                                             style.titleColor = [ UIColor redColor];
+    );
+    
+    self.button.style.hightlightedStyle = DZButtonStateStyleMake(
+                                                                 style.titleColor = [UIColor redColor];
+    );
+    
+    self.button.style.normalStyle = DZButtonStateStyleMake(
+                                                           style.titleColor = [UIColor blackColor];
+    
+    );
 #endif
 //
 	// Do any additional setup after loading the view, typically from a nib.
