@@ -51,7 +51,7 @@ IMP_ZERO_STYLE
         _##littleName  = [[DZMetricsStyle zeroStyle] copy]; \
         [_##littleName installOnView:self.linkedView]; \
     } \
-    return _#littleName; \
+    return _##littleName; \
 }
 
 IMP_Object_Style(compactMetricStyle, compactMetricStyle)
