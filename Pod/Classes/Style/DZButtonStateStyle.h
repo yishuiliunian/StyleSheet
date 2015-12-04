@@ -9,8 +9,8 @@
 #import "DZStyle.h"
 
 #define DZButtonStateStyleMake(initCode)               DZStyleMake(initCode, DZButtonStateStyle)
-#define IMP_SHARE_VIEW_STYLE(name , initCode)   IMP_SHARE_STYLE(name , initCode, DZButtonStateStyle)
-#define EXTERN_SHARE_VIEW_STYLE(name)           EXTERN_SHARE_STYLE(name, DZButtonStateStyle);
+#define IMP_SHARE_BUTTON_STATE_STYLE(name , initCode)   IMP_SHARE_STYLE(name , initCode, DZButtonStateStyle)
+#define EXTERN_SHARE_BUTTON_STATE_STYLE(name)           EXTERN_SHARE_STYLE(name, DZButtonStateStyle);
 
 @interface DZButtonStateStyle : DZStyle
 @property (nonatomic, assign) UIControlState state;

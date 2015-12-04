@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "StyleSheet"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "在IOS基础空间所能够支持的样式基础之上，建立的类似于样式配置表css的模块。为每个控件制定一个style，可以用来控制该控件的样式，同时样式可以在多个控件之间复用。"
   s.description      = <<-DESC
                        在IOS基础控件所能够支持的样式基础之上，建立的类似于样式配置表css的模块。为每个控件制定一个style，可以用来控制该控件的样式，同时样式可以在多个控件之间复用。

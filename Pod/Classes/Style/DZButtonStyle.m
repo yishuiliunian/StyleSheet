@@ -8,9 +8,49 @@
 
 #import "DZButtonStyle.h"
 
+@interface DZButtonStyle   ()
+{
+}
+@end
+
 @implementation DZButtonStyle
+@synthesize normalStyle = _normalStyle;
+@synthesize disabledStyle = _disabledStyle;
+@synthesize hightlightedStyle = _hightlightedStyle;
 IMP_ZERO_STYLE
 
+- (instancetype) init
+{
+    self = [super init];
+    if (!self) {
+        return self;
+    }
+    return self;
+}
+
+- (DZButtonStateStyle*) normalStyle
+{
+    if (!_normalStyle) {
+        _normalStyle = [[DZButtonStateStyle zeroStyle] copy];
+    }
+    return _normalStyle;
+}
+
+- (DZButtonStateStyle*) disabledStyle
+{
+    if (!_disabledStyle) {
+        _disabledStyle = [[DZButtonStateStyle zeroStyle] copy];
+    }
+    return _disabledStyle;
+}
+
+- (DZButtonStateStyle*) hightlightedStyle
+{
+    if (!_hightlightedStyle) {
+        _hightlightedStyle = [[DZButtonStateStyle zeroStyle] copy];
+    }
+    return _hightlightedStyle;
+}
 
 -(void) setNormalStyle:(DZButtonStateStyle *)normalStyle
 {
