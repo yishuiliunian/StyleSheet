@@ -60,13 +60,13 @@ IMP_ZERO_STYLE
 - (void) addChildStyle:(DZStyle*)style
 {
     if (style) {
-        [_childStyle addObject:style];
+        [_childStyle addObject:style.copy];
     }
 }
 
 - (void) removeChildStyle:(DZStyle*)style
 {
-    [_childStyle removeObject:style];
+    [_childStyle removeObject:style.copy];
 }
 
 - (void) removeAllChildStyle

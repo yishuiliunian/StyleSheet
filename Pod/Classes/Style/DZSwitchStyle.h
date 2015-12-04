@@ -13,5 +13,7 @@
 #define EXTERN_SHARE_SWITCH_STYLE(name)           EXTERN_SHARE_STYLE    (name,      DZSwitchStyle               );
 
 @interface DZSwitchStyle : DZViewStyle
-
+@property (nonatomic, strong) UIColor* onTintColor;
+@property (nonatomic, strong) UIColor tintColor;
+@property (nonatomic, strong) UIColor* thumbTintColor;
 @end

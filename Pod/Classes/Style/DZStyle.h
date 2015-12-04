@@ -56,6 +56,7 @@ self.attr = [origin.attr copy]; \
 {
     NSMutableArray* _childStyle;
 }
+@property (nonatomic, strong, readonly) NSString* key;
 @property (nonatomic, weak, readonly) UIView* linkedView;
 /**
  *  标准的样式，采用空的默认样式
