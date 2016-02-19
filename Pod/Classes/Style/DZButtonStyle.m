@@ -32,6 +32,7 @@ IMP_ZERO_STYLE
 {
     if (!_normalStyle) {
         _normalStyle = [[DZButtonStateStyle zeroStyle] copy];
+        _normalStyle.state = UIControlStateNormal;
     }
     return _normalStyle;
 }
@@ -40,6 +41,7 @@ IMP_ZERO_STYLE
 {
     if (!_disabledStyle) {
         _disabledStyle = [[DZButtonStateStyle zeroStyle] copy];
+        _disabledStyle.state = UIControlStateDisabled;
     }
     return _disabledStyle;
 }
@@ -48,6 +50,7 @@ IMP_ZERO_STYLE
 {
     if (!_hightlightedStyle) {
         _hightlightedStyle = [[DZButtonStateStyle zeroStyle] copy];
+        _hightlightedStyle.state = UIControlStateHighlighted;
     }
     return _hightlightedStyle;
 }
