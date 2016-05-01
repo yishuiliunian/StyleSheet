@@ -16,7 +16,7 @@ IMP_ZERO_STYLE
     self = [super init];
     if (self) {
         [self setTextStyle:(DZTextStyle*)[DZTextStyle zeroStyle]];
-        _clipsToBounds = YES;
+        _clipsToBounds = NO;
     }
     return self;
 }

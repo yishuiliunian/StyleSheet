@@ -98,6 +98,7 @@ IMP_ZERO_STYLE
     if (self) {
         _alpha = 1.0;
         _clearsContextBeforeDrawing = YES;
+        _clipsToBounds = YES;
     }
     return self;
 }
@@ -168,7 +169,9 @@ IMP_ZERO_STYLE
         aView.layer.borderColor = self.borderColor.CGColor;
     }
     aView.alpha = self.alpha;
-    aView.clipsToBounds = self.clipsToBounds;
+    if (aView.clipsToBounds != self.clipsToBounds) {
+        aView.clipsToBounds = self.clipsToBounds;
+    }
     aView.clearsContextBeforeDrawing = self.clearsContextBeforeDrawing;
     aView.styleBackgroundImage = _styleBackgroundImage;
 }
