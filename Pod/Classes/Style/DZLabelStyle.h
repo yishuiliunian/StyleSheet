@@ -21,5 +21,5 @@
 @property (nonatomic, strong) UIColor* shadowColor;
 @property (nonatomic, assign) CGSize shadowOffset;
 @property (nonatomic)         CGFloat adjustsFontSizeToFitWidth;
-@property (nonatomic, assign) UITextAlignment textAlignment;
+@property (nonatomic, assign) NSTextAlignment textAlignment;
 @end
