@@ -17,6 +17,7 @@
 @synthesize normalStyle = _normalStyle;
 @synthesize disabledStyle = _disabledStyle;
 @synthesize hightlightedStyle = _hightlightedStyle;
+@synthesize selectedStyle = _selectedStyle;
 IMP_ZERO_STYLE
 
 - (instancetype) init
@@ -55,6 +56,25 @@ IMP_ZERO_STYLE
     return _hightlightedStyle;
 }
 
+
+- (DZButtonStateStyle*) selectedStyle
+{
+    if (!_selectedStyle) {
+        _selectedStyle = [[DZButtonStateStyle zeroStyle]copy];
+        _selectedStyle.state = UIControlStateSelected;
+    }
+    return _selectedStyle;
+}
+
+- (void) setSelectedStyle:(DZButtonStateStyle *)selectedStyle
+{
+    if (_selectedStyle != selectedStyle) {
+        _selectedStyle = [selectedStyle copy];
+        _selectedStyle.state = UIControlStateSelected;
+        [selectedStyle setAttributeNeedRefresh];
+    }
+}
+
 -(void) setNormalStyle:(DZButtonStateStyle *)normalStyle
 {
     if (_normalStyle != normalStyle) {
@@ -88,6 +108,7 @@ IMP_ZERO_STYLE
     DZStyleCopyAttribute_Copy(disabledStyle)
     DZStyleCopyAttribute_Copy(normalStyle)
     DZStyleCopyAttribute_Copy(hightlightedStyle)
+    DZStyleCopyAttribute_Copy(selectedStyle);
     DZFinishCopyAttribute
 }
 
@@ -101,6 +122,7 @@ IMP_ZERO_STYLE
     [self.disabledStyle decorateView:aView];
     [self.normalStyle decorateView:aView];
     [self.hightlightedStyle decorateView:aView];
+    [self.selectedStyle decorateView:aView];
 }
 
 - (id) copyWithZone:(NSZone *)zone
@@ -109,6 +131,7 @@ IMP_ZERO_STYLE
     style.hightlightedStyle = [self.hightlightedStyle copy];
     style.normalStyle = [self.normalStyle copy];
     style.disabledStyle = [self.disabledStyle copy];
+    style.selectedStyle = [self.selectedStyle copy];
     return style;
 }
 

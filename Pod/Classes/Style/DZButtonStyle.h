@@ -17,4 +17,5 @@
 @property (nonatomic, copy) DZButtonStateStyle* normalStyle;
 @property (nonatomic, copy) DZButtonStateStyle* disabledStyle;
 @property (nonatomic, copy) DZButtonStateStyle* hightlightedStyle;
+@property (nonatomic, copy) DZButtonStateStyle* selectedStyle;
 @end
