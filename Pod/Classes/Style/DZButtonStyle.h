@@ -18,4 +18,5 @@
 @property (nonatomic, copy) DZButtonStateStyle* disabledStyle;
 @property (nonatomic, copy) DZButtonStateStyle* hightlightedStyle;
 @property (nonatomic, copy) DZButtonStateStyle* selectedStyle;
+@property (nonatomic, copy) UIFont* labelFont;
 @end

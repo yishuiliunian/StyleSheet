@@ -38,6 +38,7 @@ IMP_ZERO_STYLE
     return _normalStyle;
 }
 
+
 - (DZButtonStateStyle*) disabledStyle
 {
     if (!_disabledStyle) {
@@ -93,6 +94,13 @@ IMP_ZERO_STYLE
     }
 }
 
+- (void) setLabelFont:(UIFont *)labelFont
+{
+    if (_labelFont != labelFont) {
+        _labelFont = labelFont;
+        [self setAttributeNeedRefresh];
+    }
+}
 - (void) setHightlightedStyle:(DZButtonStateStyle *)hightlightedStyle
 {
     if (_hightlightedStyle != hightlightedStyle) {
@@ -109,6 +117,7 @@ IMP_ZERO_STYLE
     DZStyleCopyAttribute_Copy(normalStyle)
     DZStyleCopyAttribute_Copy(hightlightedStyle)
     DZStyleCopyAttribute_Copy(selectedStyle);
+    DZStyleCopyAttribute_Copy(labelFont);
     DZFinishCopyAttribute
 }
 
@@ -119,10 +128,14 @@ IMP_ZERO_STYLE
     if (![aView isKindOfClass:[UIButton class]]) {
         return;
     }
+    UIButton* btn = (UIButton*)aView;
     [self.disabledStyle decorateView:aView];
     [self.normalStyle decorateView:aView];
     [self.hightlightedStyle decorateView:aView];
     [self.selectedStyle decorateView:aView];
+    if (_labelFont) {
+        btn.titleLabel.font = self.labelFont;
+    }
 }
 
 - (id) copyWithZone:(NSZone *)zone
@@ -132,6 +145,7 @@ IMP_ZERO_STYLE
     style.normalStyle = [self.normalStyle copy];
     style.disabledStyle = [self.disabledStyle copy];
     style.selectedStyle = [self.selectedStyle copy];
+    style.labelFont = self.labelFont;
     return style;
 }
 
