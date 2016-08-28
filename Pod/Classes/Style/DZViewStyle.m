@@ -73,7 +73,7 @@ static void* kStyleBackgoundImageView = &kStyleBackgoundImageView;
 {
     [self __styleSetFrame:frame];
     UIImageView* imageView = objc_getAssociatedObject(self, kStyleBackgoundImageView);
-    if (imageView) {
+    if (imageView && !CGRectIsNull(frame)) {
         imageView.frame = frame;
     }
     
