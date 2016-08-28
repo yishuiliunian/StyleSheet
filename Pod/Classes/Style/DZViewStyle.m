@@ -85,7 +85,6 @@ static void* kStyleBackgoundImageView = &kStyleBackgoundImageView;
     if (imageView) {
         imageView.frame = self.frame;
     }
-    
 }
 
 @end
