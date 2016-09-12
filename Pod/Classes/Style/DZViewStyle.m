@@ -9,85 +9,6 @@
 #import "DZViewStyle.h"
 #import <objc/runtime.h>
 
-void DZSwzzingMethod(Class cla, SEL originSEL, SEL swizzSEL) {
-    Method originMethod = class_getInstanceMethod(cla, originSEL);
-    Method swizzledMethod = class_getInstanceMethod(cla, swizzSEL );
-    method_exchangeImplementations(originMethod, swizzledMethod);
-}
-
-@interface UIView (StyleBackground)
-@property (nonatomic, strong) UIImage* styleBackgroundImage;
-@property (nonatomic, strong) UIImageView* styleBackgoundImageView;
-@end
-
-static void* kStyleBackgoundImage = &kStyleBackgoundImage;
-static void* kStyleBackgoundImageView = &kStyleBackgoundImageView;
-@implementation UIView (StyleBackground)
-
-+ (void) load
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        DZSwzzingMethod([self class], @selector(layoutSubviews), @selector(__styleLayoutSubViews));
-        DZSwzzingMethod([self class], @selector(setFrame:), @selector(__styleSetFrame:));
-    });
-}
-
-- (void) setStyleBackgroundImage:(UIImage *)styleBackgroundImage
-{
-    objc_setAssociatedObject(self, kStyleBackgoundImage, styleBackgroundImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if (styleBackgroundImage) {
-        self.styleBackgoundImageView.image = styleBackgroundImage;
-    } else {
-        UIImageView* imageView = objc_getAssociatedObject(self, kStyleBackgoundImageView);
-        [imageView removeFromSuperview];
-        self.styleBackgoundImageView = nil;
-    }
-}
-
-- (void) setStyleBackgoundImageView:(UIImageView *)styleBackgoundImageView
-{
-    objc_setAssociatedObject(self, kStyleBackgoundImageView, styleBackgoundImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (UIImageView*) styleBackgoundImageView
-{
-    UIImageView* imageView = objc_getAssociatedObject(self, kStyleBackgoundImageView);
-    if (!imageView) {
-        imageView = [UIImageView new];
-        imageView.contentMode = UIViewContentModeTopLeft;
-        imageView.layer.masksToBounds = YES;
-        [self.superview insertSubview:imageView belowSubview:self];
-        self.styleBackgoundImageView = imageView;
-        [self setNeedsLayout];
-    }
-    return imageView;
-}
-
-- (UIImage*) styleBackgroundImage
-{
-    return objc_getAssociatedObject(self, kStyleBackgoundImage);
-}
-
-- (void) __styleSetFrame:(CGRect)frame
-{
-    [self __styleSetFrame:frame];
-    UIImageView* imageView = objc_getAssociatedObject(self, kStyleBackgoundImageView);
-    if (imageView && !CGRectIsNull(frame)) {
-        imageView.frame = frame;
-    }
-    
-}
-- (void) __styleLayoutSubViews
-{
-    [self __styleLayoutSubViews];
-    UIImageView* imageView = objc_getAssociatedObject(self, kStyleBackgoundImageView);
-    if (imageView) {
-        imageView.frame = self.frame;
-    }
-}
-
-@end
 
 @implementation DZViewStyle
 IMP_ZERO_STYLE
@@ -148,13 +69,6 @@ IMP_ZERO_STYLE
     _clearsContextBeforeDrawing = clearsContextBeforeDrawing;
     [self setAttributeNeedRefresh];
 }
-- (void) setStyleBackgroundImage:(UIImage *)styleBackgroundImage
-{
-    if (_styleBackgroundImage != styleBackgroundImage) {
-        _styleBackgroundImage = styleBackgroundImage;
-        [self setAttributeNeedRefresh];
-    }
-}
 
 - (void) decorateView:(UIView *)aView
 {
@@ -172,7 +86,6 @@ IMP_ZERO_STYLE
         aView.clipsToBounds = self.clipsToBounds;
     }
     aView.clearsContextBeforeDrawing = self.clearsContextBeforeDrawing;
-    aView.styleBackgroundImage = _styleBackgroundImage;
 }
 
 - (void) copyAttributesWithStyle:(id)style
@@ -185,7 +98,6 @@ IMP_ZERO_STYLE
     DZStyleCopyAttribute(alpha)
     DZStyleCopyAttribute(clipsToBounds)
     DZStyleCopyAttribute(clearsContextBeforeDrawing)
-    DZStyleCopyAttribute(styleBackgroundImage);
     DZFinishCopyAttribute
 }
 - (id) copyWithZone:(NSZone *)zone
@@ -197,7 +109,6 @@ IMP_ZERO_STYLE
     style.borderWidth = self.borderWidth;
     style.alpha = self.alpha;
     style.clipsToBounds = self.clipsToBounds;
-    style.styleBackgroundImage = self.styleBackgroundImage;
     return style;
 }
 
