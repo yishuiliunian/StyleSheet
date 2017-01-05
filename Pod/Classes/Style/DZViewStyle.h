@@ -37,4 +37,5 @@ return style; \
 @property (nonatomic, assign) CGFloat alpha;
 @property (nonatomic, assign) BOOL clipsToBounds;
 @property (nonatomic, assign) BOOL clearsContextBeforeDrawing;
+@property  (nonatomic, assign) UIViewContentMode contentMode;
 @end

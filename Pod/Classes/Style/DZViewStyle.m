@@ -19,6 +19,7 @@ IMP_ZERO_STYLE
         _alpha = 1.0;
         _clearsContextBeforeDrawing = YES;
         _clipsToBounds = YES;
+        _contentMode = UIViewContentModeScaleToFill;
     }
     return self;
 }
@@ -85,6 +86,9 @@ IMP_ZERO_STYLE
     if (aView.clipsToBounds != self.clipsToBounds) {
         aView.clipsToBounds = self.clipsToBounds;
     }
+    if (aView.contentMode != self.contentMode) {
+        aView.contentMode = self.contentMode;
+    }
     aView.clearsContextBeforeDrawing = self.clearsContextBeforeDrawing;
 }
 
@@ -98,6 +102,7 @@ IMP_ZERO_STYLE
     DZStyleCopyAttribute(alpha)
     DZStyleCopyAttribute(clipsToBounds)
     DZStyleCopyAttribute(clearsContextBeforeDrawing)
+    DZStyleCopyAttribute(contentMode)
     DZFinishCopyAttribute
 }
 - (id) copyWithZone:(NSZone *)zone
@@ -109,6 +114,7 @@ IMP_ZERO_STYLE
     style.borderWidth = self.borderWidth;
     style.alpha = self.alpha;
     style.clipsToBounds = self.clipsToBounds;
+    style.contentMode = self.contentMode;
     return style;
 }
 
