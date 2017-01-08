@@ -23,9 +23,9 @@ IMP_ZERO_STYLE
 
 - (void) setTextStyle:(DZTextStyle *)textStyle
 {
-    [_textStyle unInstallOnView:self.linkedView];
+    [_textStyle unInstallOnViews:self.linkedViews];
     _textStyle = [textStyle copy];
-    [_textStyle installOnView:self.linkedView];
+    [_textStyle installOnViews:self.linkedViews];
     [_textStyle setAttributeNeedRefresh];
 }
 

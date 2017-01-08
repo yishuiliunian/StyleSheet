@@ -57,7 +57,7 @@ self.attr = [origin.attr copy]; \
     NSMutableArray* _childStyle;
 }
 @property (nonatomic, strong, readonly) NSString* key;
-@property (nonatomic, weak, readonly) UIView* linkedView;
+@property (nonatomic, weak, readonly) NSArray* linkedViews;
 /**
  *  标准的样式，采用空的默认样式
  *
@@ -86,11 +86,23 @@ self.attr = [origin.attr copy]; \
 - (void) unInstallOnView:(UIView*)aView;
 //
 
+/*将该样式绑定到制定的View上面，当样式发生改变的时候改变该View的样式
+ * */
+- (void) installOnViews:(NSArray *)views;
+
+/*  取消绑定
+ * */
+- (void) unInstallOnViews:(NSArray *)views;
+
 /**
  *  当样式的属性改变的时候，调用该函数，会重新进行渲染。
  */
 - (void) setAttributeNeedRefresh;
 
+
+/*直接渲染所有连接的View
+ * */
+- (void) renderAllLinedViews;
 - (void) copyAttributesWithStyle:(id)style;
 
 - (void) addChildStyle:(DZStyle*)style;

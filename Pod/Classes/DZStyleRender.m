@@ -9,20 +9,11 @@
 #import "DZStyleRender.h"
 #import <QuartzCore/QuartzCore.h>
 #import "DZStyle.h"
-@interface DZWeakLink : NSObject
-@property (nonatomic, weak) NSObject* weakObject;
-@end
-
-@implementation DZWeakLink
-@synthesize weakObject;
-@end
-
-
 
 @interface DZStyleRender ()
 {
     CADisplayLink* _displayLink;
-    NSMutableArray* _needRenderStyle;
+    NSPointerArray* _needRenderStyle;
 }
 @end
 
@@ -54,7 +45,7 @@
     }
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(handleDisplay:)];
     [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    _needRenderStyle = [NSMutableArray new];
+    _needRenderStyle = [NSPointerArray weakObjectsPointerArray];
     return self;
 }
 
@@ -63,17 +54,18 @@
     if (_needRenderStyle.count == 0) {
         return;
     }
-    for (DZWeakLink* link in _needRenderStyle) {
-        DZStyle* style = (DZStyle*)link.weakObject;
-        [style decorateView:style.linkedView];
+    for (DZStyle * style in _needRenderStyle.allObjects) {
+        [style renderAllLinedViews];
     }
-    [_needRenderStyle removeAllObjects];
+    _needRenderStyle = [NSPointerArray weakObjectsPointerArray];
 }
 
 - (BOOL) hasStyle:(DZStyle*)style
 {
-    for (DZWeakLink* link  in _needRenderStyle) {
-        if (link.weakObject == style) {
+    NSAssert([NSThread isMainThread], @"请在主线程运行StyleSheet");
+    NSArray * allStyles = [[_needRenderStyle allObjects] copy];
+    for (DZStyle * style in allStyles) {
+        if (style == style) {
             return YES;
         }
     }
@@ -85,9 +77,10 @@
     if ([self hasStyle:style]) {
         return;
     }
-    DZWeakLink* link = [DZWeakLink new];
-    link.weakObject = style;
-    [_needRenderStyle addObject:link];
+    if (!style) {
+        return;;
+    }
+    [_needRenderStyle addPointer:(__bridge void*)style];
 }
 
 @end

@@ -18,9 +18,9 @@ IMP_ZERO_STYLE
 - (void) setDefualtMetricsStyle:(DZMetricsStyle *)defualtMetricsStyle
 {
     if (_defualtMetricsStyle != defualtMetricsStyle) {
-        [_defualtMetricsStyle unInstallOnView:self.linkedView];
+        [_defualtMetricsStyle unInstallOnViews:self.linkedViews];
         _defualtMetricsStyle = [defualtMetricsStyle copy];
-        [_defualtMetricsStyle installOnView:self.linkedView];
+        [_defualtMetricsStyle installOnViews:self.linkedViews];
         [self setAttributeNeedRefresh];
     }
 }
@@ -29,7 +29,7 @@ IMP_ZERO_STYLE
 {
     if (!_defualtMetricsStyle) {
         _defualtMetricsStyle = [[DZMetricsStyle zeroStyle] copy];
-        [_defualtMetricsStyle installOnView:self.linkedView];
+        [_defualtMetricsStyle installOnViews:self.linkedViews];
     }
     return _defualtMetricsStyle;
 }
@@ -37,9 +37,9 @@ IMP_ZERO_STYLE
 - (void) setCompactMetricStyle:(DZMetricsStyle *)compactMetricStyle
 {
     if (_compactMetricStyle != compactMetricStyle) {
-        [_compactMetricStyle unInstallOnView:self.linkedView];
+        [_compactMetricStyle unInstallOnViews:self.linkedViews];
         _compactMetricStyle = [compactMetricStyle copy];
-        [_compactMetricStyle installOnView:self.linkedView];
+        [_compactMetricStyle installOnViews:self.linkedViews];
         [self setAttributeNeedRefresh];
     }
 }
@@ -49,7 +49,7 @@ IMP_ZERO_STYLE
 { \
     if (!_##littleName) { \
         _##littleName  = [[DZMetricsStyle zeroStyle] copy]; \
-        [_##littleName installOnView:self.linkedView]; \
+        [_##littleName installOnViews:self.linkedViews]; \
     } \
     return _##littleName; \
 }
