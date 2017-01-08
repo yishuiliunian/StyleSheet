@@ -36,6 +36,8 @@ static void* kDZStyleClass = &kDZStyleClass;
     }
     else if ([self isKindOfClass:[DZTextFieldStyle class]]) {
         return [DZTextFieldStyle class];
+    } else if ([self isKindOfClass:[UISwitch class]]) {
+        return [DZSwitchStyle class];
     }
     else {
         Class cla = objc_getAssociatedObject(self, kDZStyleClass);
