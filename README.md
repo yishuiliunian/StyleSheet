@@ -25,7 +25,8 @@ pod "StyleSheet"
 ```
 
 
-##What's wrong with origin method?
+## What's wrong with origin method?
+
 如果要实现下面这个效果，两个label，一个button，一个view
 ![image](http://ww1.sinaimg.cn/large/7df22103jw1euv1c5pbvdj20k00zkq3f.jpg)
 基于原有的配置大概要写
@@ -87,11 +88,12 @@ self.label.style = DZLabelStyleMake(
 
 
 
-###How to use?
+### How to use?
+
 在设计StyleSheet的时候故意淡化了被渲染的View的类型的概念，任何一种类型的Style可以对任何类型的View进行渲染，但是必须是这种类型的View支持Style所指称的属性。比如你可以使用真对Button设计的DZButtonStateStyle来渲染一个UILabel，但由于UILabel不支持DZButtonStateStyle中的渲染属性，所以渲染结果是无效的。  
 
 但是当使用DZButtonStyle(继承自DZViewStyle)来渲染UILabel的时候，会使用DZButtonStyle中其父类的某些渲染属性，来渲染UILabel的父类UIView所支持的那些属性。
-####直接使用Style对View进行渲染：
+#### 直接使用Style对View进行渲染：
 
 ```
 DZLabelStyle* style = DZLabelStyleMake(
@@ -108,7 +110,7 @@ DZLabelStyle* style = DZLabelStyleMake(
 直接渲染的好处是，不用再次生成Style对象，更加方便样式在多个View之间渲染。
 
 
-####赋值渲染
+#### 赋值渲染
 
 ```
 self.label.style = style;
@@ -128,12 +130,14 @@ self.label.style = DZLabelStyleMake(
 ```
 
 当进行赋值渲染的时候，会将Style的Copy后的实例与当前View绑定，当更改Style的属性的时候，对应View的样式会立刻改变。
+ 
+### 通用样式的共享
 
-###通用样式的共享
 使用原有的配置，进行通用样式的共享是个非常困难的事情，基本上都是体力活，靠人力来维护。我们的代码中会掺杂大量的用于配置样式的代码，而且是独立且散在。
 
 现在你可以通过StyleSheet解决：
-####定义共享的样式：
+
+#### 定义共享的样式：
 
 ```
 EXTERN_SHARE_LABEL_STYLE(Content)
@@ -146,12 +150,12 @@ IMP_SHARE_LABEL_STYLE(Content,
 ```
 
 
-####使用共享样式,方式一
+#### 使用共享样式,方式一
 
 ```
 self.label.style =  DZStyleContent();
 ```
-####使用共享样式，方式二（推荐）
+#### 使用共享样式，方式二（推荐）
 很多时候, 如果不需要进一步更改样式,可以不采复制赋值的方式来进行渲染，可以直接使用：
 
 ```
@@ -160,7 +164,7 @@ self.label.style =  DZStyleContent();
 ```
 只进行渲染，而不进行复制
 
-##支持的类型
+## 支持的类型
 
 1. UIView
 2. UILabel
@@ -168,7 +172,7 @@ self.label.style =  DZStyleContent();
 4. UITextField
 5. UIButton
 
-##计划中支持的类型
+## 计划中支持的类型
 
 1. UISearchBar
 2. UINavigationBar
